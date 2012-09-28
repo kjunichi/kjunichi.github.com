@@ -2,3 +2,5 @@
 *.html~
 
 .#index.html
+
+*.html#

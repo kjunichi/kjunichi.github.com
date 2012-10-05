@@ -25,9 +25,9 @@ function doMyFunc(inText) {
 	    }
         var tmp = issuedDate.split('-');
 	    $('#hatebu').append('<div class="date">'
-                         + '<p><span class="year">'+tmp[0]+'îN</span>'
-                         +'<span class="month">' + tmp[1] + 'åé</span>'
-                         +'<span class="day">'+tmp[2] + 'ì˙</span></p>'
+                         + '<p><span class="year">'+tmp[0]+'Âπ¥</span>'
+                         +'<span class="month">' + tmp[1] + 'Êúà</span>'
+                         +'<span class="day">'+tmp[2] + 'Êó•</span></p>'
                          + '</div>');
 	    ul = $('<ul/>');
 	    savedIssuedDate = issuedDate;
@@ -41,7 +41,7 @@ function doMyFunc(inText) {
 	elm.parentNode.removeChild(elm);
 }
 
-// forked from kjunichi's "îCà”ÇÃURLÇGETÇ∑ÇÈ" http://jsdo.it/kjunichi/A3vG
+// forked from kjunichi's "‰ªªÊÑè„ÅÆURL„ÇíGET„Åô„Çã" http://jsdo.it/kjunichi/A3vG
 $(function(){
   
 	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80";

@@ -51,10 +51,10 @@ $(function(){
 	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80";
 	$('#outHtml').text("Fetching...");
 	timerId = setInterval(function() {
-		t=t+0.1;
+		t=t+0.2;
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
-	},300)
+	},300);
 	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+turl+"&callback=?", 
 		       function(data) {
 			   doMyFunc(data.html);

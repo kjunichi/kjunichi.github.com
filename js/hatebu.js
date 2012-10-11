@@ -1,4 +1,6 @@
 // hatebu.js
+var t=0;
+var timerId;
 function doMyFunc(inText) {
 	
     var parser = new DOMParser();
@@ -7,8 +9,9 @@ function doMyFunc(inText) {
     var savedIssuedDate = "";
     var ul = "";
     for(var i = 0; i < entries.length; i++) {
-    	var barVal = i/entries.length*100;
-    	$('#hateprogressBar').css("width",barVal+"%");
+    	//var barVal = i/entries.length*100;
+    	//$('#hateprogressBar').css("width",barVal+"%");
+    	
 	var issued = entries[i].getElementsByTagName("issued")[0].textContent;
 	var issuedDate = issued.split("T")[0];
 	var title = entries[i].getElementsByTagName("title")[0].textContent;
@@ -37,6 +40,7 @@ function doMyFunc(inText) {
     if(ul !== "") {
 		$('#hatebu').append(ul);
 	    }
+	    clearInterval(timerId);
 	    var elm = document.getElementById("hateprogress");
 	elm.parentNode.removeChild(elm);
 }
@@ -46,6 +50,11 @@ $(function(){
   
 	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80";
 	$('#outHtml').text("Fetching...");
+	timerId = setInterval(function() {
+		t=t+0.1;
+		var r = (1-1/(t+1))*100;
+		$('#hateprogressBar').css("width",r+"%");
+	},300)
 	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+turl+"&callback=?", 
 		       function(data) {
 			   doMyFunc(data.html);

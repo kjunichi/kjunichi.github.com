@@ -39,9 +39,10 @@ function doMyFunc(inText) {
     }
     if(ul !== "") {
 		$('#hatebu').append(ul);
-	    }
-	    clearInterval(timerId);
-	    var elm = document.getElementById("hateprogress");
+	}
+	clearInterval(timerId);
+	$('#hateprogressBar').css("width","100%");
+	var elm = document.getElementById("hateprogress");
 	elm.parentNode.removeChild(elm);
 }
 

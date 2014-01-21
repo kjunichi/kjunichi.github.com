@@ -56,7 +56,7 @@ $(function(){
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
-	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+turl+"&callback=?", 
+	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+encodeURIComponent(turl)+"&callback=?", 
 		       function(data) {
 			   doMyFunc(data.html);
 	});

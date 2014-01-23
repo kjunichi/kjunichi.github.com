@@ -1,0 +1,39 @@
+// forked from kjunichi's "Jsdo.itでサーバサイドJavaScript テンプレート" http://jsdo.it/kjunichi/ipadt
+function jsdoitServerFunc(req) {
+    //var meta ='<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">';
+    // リファラーでブロック
+    if(req.headers.referer.lastIndexOf("http://develop.5639.jp",0)===0) {
+        res.status="200";
+        res.headers={};
+        res.headers['content-type']="text/javascript";
+        res.body=[queryParameters.callback,'({html: ""});'];
+    }
+    
+    // Query stringの解析
+    var httpUtil = require('ringo/utils/http');
+    var queryParameters={};
+    httpUtil.parseParameters(req.queryString,queryParameters);
+    
+    var targetUrl = queryParameters.url;
+    var buf = "";
+    if(targetUrl!=="") {       
+        //var url = new java.net.URL(decodeURIComponent(targetUrl));
+        /*var ucon = url.openConnection();
+        var istream = ucon.getInputStream();
+        var isr = new java.io.InputStreamReader(istream, "utf-8");
+        var br = new java.io.BufferedReader(isr);
+        var line = "";
+    
+        while ((line = br.readLine()) !== null) {
+            buf=buf+line;
+        }*/
+        buf=targetUrl+"\n"+decodeURIComponent(targetUrl);
+    }
+    var res={};
+    res.status="200";
+    res.headers={};
+    res.headers['content-type']="text/javascript";
+    res.body=[queryParameters.callback,"({html: ",JSON.stringify(buf),"});"];
+    
+    return res;
+}

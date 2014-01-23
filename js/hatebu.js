@@ -49,14 +49,14 @@ function doMyFunc(inText) {
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG
 $(function(){
   
-	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=%E3%81%82%E3%81%A8%E3%81%A7%E8%AA%AD%E3%82%80";
+	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 	$('#outHtml').text("Fetching...");
 	timerId = setInterval(function() {
 		t=t+0.2;
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
-	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+turl+"&callback=?", 
+	jQuery.getJSON("http://kjunurl.appspot.com/mkly?url="+encodeURIComponent(turl)+"&callback=?", 
 		       function(data) {
 			   doMyFunc(data.html);
 	});

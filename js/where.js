@@ -1,5 +1,7 @@
 // where.js
-
+(function() {
+     var _window = window, _document = _window.document;
+     
 var _getDirPathOfUrl = function(url) {
     var dir;
     if (typeof url === "string" && url) {
@@ -57,3 +59,6 @@ var _getDefaultMyPath = function() {
   var jsDir = _getDirPathOfUrl(_getCurrentScriptUrl()) || _getUnanimousScriptParentDir() || "";
   return jsDir + "where.js";
 };
+
+
+})();

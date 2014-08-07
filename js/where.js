@@ -60,5 +60,5 @@ var _getDefaultMyPath = function() {
   return jsDir + "where.js";
 };
 
-
+console.log(_getDefaultMyPath());
 })();

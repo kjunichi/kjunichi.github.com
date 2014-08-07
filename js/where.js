@@ -61,4 +61,6 @@ var _getDefaultMyPath = function() {
 };
 
 console.log(_getDefaultMyPath());
+console.log("_getCurrentScriptUrl()",_getCurrentScriptUrl());
+console.log("_getUnanimousScriptParentDir()",_getUnanimousScriptParentDir());
 })();

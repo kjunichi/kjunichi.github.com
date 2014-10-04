@@ -1,0 +1,73 @@
+<html>
+<meta charset="UTF-8">
+<title>Desktop Capture</title>
+<div id="out"></div>
+<button id="rec">Rec</button>
+<button id="stop">Stop</button>
+
+<video id="outV" controls></video>
+<script>
+var outV = document.getElementById("outV");
+
+var stopBtn = document.getElementById("stop");
+    stopBtn.addEventListener("click",function() {
+    stop();
+},false);
+
+var recBtn = document.getElementById("rec");
+recBtn.addEventListener("click",function() {
+    start();
+},false);
+var elm = document.getElementById("out");
+var localStream;
+
+function start() {
+     var out = document.getElementById("out");
+     out.innerHTML = "Capture start!";
+     if (navigator.webkitGetUserMedia) {
+         navigator.webkitGetUserMedia({
+             audio: false,
+             video: {
+                 mandatory: {
+                     chromeMediaSource: 'screen',
+                     /*
+                     minWidth: screen.width,
+                     maxWidth: screen.width,
+                     minHeight: screen.height,
+                     maxHeight: screen.height*/
+                     minWidth: 200,
+                     maxWidth: 200,
+                     minHeight: 200,
+                     maxHeight: 200
+                 }
+             }
+         }, function(stream) {
+             elm.innerHTML = "録画中...";
+             stream.onended = function() {
+                console.log("stream onended.");
+                //stop();
+                 elm.innerHTML = "";
+             };
+             localStream = stream;
+
+             var url = window.webkitURL.createObjectURL(stream);
+            outV.src = url;
+         }, function(error) {
+            elm.innerHTML = error;
+         });
+     } else if (navigator.getUserMedia) {
+         console.log("oops!");
+     }
+ }
+
+function stop() {
+         if (navigator.webkitGetUserMedia) {
+             localStream.stop();
+             elm.innerHTML = "録画完了";
+         }
+}
+
+// キャプチャーの開始
+start();
+</script>
+</html>

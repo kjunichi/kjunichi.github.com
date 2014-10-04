@@ -35,10 +35,10 @@ function start() {
                      maxWidth: screen.width,
                      minHeight: screen.height,
                      maxHeight: screen.height*/
-                     minWidth: 200,
-                     maxWidth: 200,
-                     minHeight: 200,
-                     maxHeight: 200
+                     minWidth: 400,
+                     maxWidth: 400,
+                     minHeight: 400,
+                     maxHeight: 400
                  }
              }
          }, function(stream) {
@@ -52,6 +52,7 @@ function start() {
 
              var url = window.webkitURL.createObjectURL(stream);
             outV.src = url;
+            outV.play();
          }, function(error) {
             elm.innerHTML = error;
          });

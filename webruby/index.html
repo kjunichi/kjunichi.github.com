@@ -1,0 +1,35 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="webruby.js"></script>
+<div id="container"></div>
+<textarea id="ruby" rows="10" cols="50">
+window = MrubyJs.get_root_object
+container = window.call('$', '#container')
+
+reg = HsRegexp.new("(https?://[^/]+)[-a-zA-Z0-9./]+")
+str = "You can download mruby's source code from 'https://github.com/mruby/mruby'."
+
+match_data = reg.match(str)
+container.call("append", "<p>"+match_data[0]+"</p>")
+container.call("append", "<p>"+match_data[1]+"</p>")
+
+</textarea>
+<button id="run">
+    RUN
+</button>
+<script>
+    $(document).ready(function() {
+        function runScript() {
+            var rubyScript = $("#ruby").val();
+            var wrb = WEBRUBY();
+            
+            wrb.run_source(rubyScript);
+            
+            wrb.close();            
+        }
+        runScript();
+        $("#run").click(function() {
+            runScript();
+        });
+    });
+</script>
+

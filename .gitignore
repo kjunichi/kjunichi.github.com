@@ -1,7 +1,6 @@
+.DS_Store
 *.html~
 .#index.html
 *.html#
 myworks/.#jsdoit.html
 html5record-master/.DS_Store
-.DS_Store
-

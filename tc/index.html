@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html manifest="test.appcache">
+<head>
+<script>
+    (function () {
+        var app = applicationCache;
+        // 
+        addEventListener('checking', checking, false);
+        //
+        if (app.status === app.CHECKING) {
+            checking();
+        }
+        function checking () {
+            alert('checking');
+        }
+    })();
+</script>
+<title></title></head>
+<body>
+TEST test
+</body>
+</html>

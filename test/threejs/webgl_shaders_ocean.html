@@ -173,7 +173,7 @@
 				scene.add( skyBox );
 
 
-				var geometry = new THREE.IcosahedronGeometry( 400, 4 );
+/*jj				var geometry = new THREE.IcosahedronGeometry( 400, 4 );
 
 				for ( var i = 0, j = geometry.faces.length; i < j; i ++ ) {
 
@@ -188,7 +188,7 @@
 				} );
 
 				sphere = new THREE.Mesh( geometry, material );
-				scene.add( sphere );
+				scene.add( sphere );*/
 
 			}
 
@@ -204,10 +204,10 @@
 			function render() {
 
 				var time = performance.now() * 0.001;
-
+/*
 				sphere.position.y = Math.sin( time ) * 500 + 250;
 				sphere.rotation.x = time * 0.5;
-				sphere.rotation.z = time * 0.51;
+				sphere.rotation.z = time * 0.51;*/
 
 				water.material.uniforms.time.value += 1.0 / 60.0;
 				controls.update();

@@ -7,6 +7,12 @@
 	</head>
 	<body>
 		<h1>Hello, runstant!</h1>
+		<script>
+			var Module = {
+			  'print': function(text) { alert('stdout: ' + text) }
+			    'printErr': function(text) { alert('stderr: ' + text) }
+			    };
+		    </script>
 		<script src="segmentation.js"></script>
 		<script>
 			var chkModule = function () {

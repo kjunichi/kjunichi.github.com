@@ -89,6 +89,7 @@
     <script type="text/javascript" src="painter.js" ></script>
     <script type="text/javascript" src="segmentation.js"></script>
     <script>
+	    setTimeout(function() {
         var on_init = Module.cwrap('on_init', null, ['number', 'number', 'number', 'number', 'number']);
         var on_mouse = Module.cwrap('on_mouse', null, ['number', 'number', 'number', 'number', 'number']);
         var on_process = Module.cwrap('on_process', null, ['number', 'number', 'number']);
@@ -415,7 +416,8 @@ console.log("on_process: " + (end.getTime() - start.getTime()) + " ms");
 
         setEventCallback("bgPen", "mousedown", bgPenMouseDownCallback);
         setEventCallback("bgPen", "mousemove", bgPenMouseMoveCallback);
-        setEventCallback("bgPen", "mouseup", bgPenMouseUpCallback);
+	setEventCallback("bgPen", "mouseup", bgPenMouseUpCallback);
+	},10000);
     </script>
 </body>
 </html>

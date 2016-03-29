@@ -89503,7 +89503,7 @@ function integrateWasmJS(Module) {
   f64: 4
  };
  function applyMappedGlobals(globalsFileBase) {
-  var mappedGlobals = JSON.parse(Module["read"](globalsFileBase + ".mappedGlobals"));
+  var mappedGlobals = JSON.parse(Module["read"]("https://kjunichi.github.io/slwasm/"+globalsFileBase + ".mappedGlobals"));
   for (var name in mappedGlobals) {
    var global = mappedGlobals[name];
    if (!global.import) continue;

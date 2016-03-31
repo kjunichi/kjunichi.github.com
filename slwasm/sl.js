@@ -5588,8 +5588,8 @@ Module.asmLibraryArg = {
 var asm = (function(global,env,buffer) {
 
   'almost asm';
-  
-  
+
+
   var Int8View = global.Int8Array;
   var Int16View = global.Int16Array;
   var Int32View = global.Int32Array;
@@ -89503,7 +89503,7 @@ function integrateWasmJS(Module) {
   f64: 4
  };
  function applyMappedGlobals(globalsFileBase) {
-  var mappedGlobals = JSON.parse(Module["read"](globalsFileBase + ".mappedGlobals"));
+  var mappedGlobals = JSON.parse(Module["read"]("https://kjunichi.github.io/slwasm/"+globalsFileBase + ".mappedGlobals"));
   for (var name in mappedGlobals) {
    var global = mappedGlobals[name];
    if (!global.import) continue;
@@ -89666,7 +89666,7 @@ Module.expectedDataFileDownloads++;
    throw "using preloaded data can only be done on a web page or in a web worker";
   }
   var PACKAGE_NAME = "sl.data";
-  var REMOTE_PACKAGE_BASE = "sl.data";
+  var REMOTE_PACKAGE_BASE = "https://kjunichi.github.io/slwasm/sl.data";
   if (typeof Module["locateFilePackage"] === "function" && !Module["locateFile"]) {
    Module["locateFile"] = Module["locateFilePackage"];
    Module.printErr("warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)");
@@ -97443,7 +97443,3 @@ if (Module["noInitialRun"]) {
  shouldRunNow = false;
 }
 run();
-
-
-
-

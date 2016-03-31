@@ -388,9 +388,9 @@
     "samplers": {
         "default": {}
     },
-    "scene": "Scene",
+    "scene": "defaultScene",
     "scenes": {
-        "Scene": {
+        "defaultScene": {
             "extras": {
                 "active_camera": "Camera",
                 "background_color": [

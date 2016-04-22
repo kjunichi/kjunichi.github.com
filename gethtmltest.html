@@ -5,14 +5,14 @@ function cb(data) {
     console.log("getdata.");
 }
 
-document.addEventListener("load",function() {  
+window.addEventListener("load",function() {  
   
   var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
   const s = document.createElement("script");
   s.charset = 'utf-8';
   s.type = "text/javascript";
   s.src="http://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
-	document.body.appendChild(s);
+  document.body.appendChild(s);
 },false);
 </script>
 </body>

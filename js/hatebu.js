@@ -46,6 +46,10 @@ function doMyFunc(inText) {
 	elm.parentNode.removeChild(elm);
 }
 
+function cb(data) {
+  doMyFunc(data.html);
+}
+
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG
 $(function(){
   
@@ -62,9 +66,6 @@ $(function(){
 	   doMyFunc(data.html);
 	});
 */
-function cb(data) {
-  doMyFunc(data.html);
-}
 var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 const s = document.createElement("script");
 s.src="https://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";

@@ -67,7 +67,7 @@ function cb(data) {
 }
 var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 const s = document.createElement("script");
-s.src="http://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
+s.src="https://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
 document.body.appendChild(s);
 	
     

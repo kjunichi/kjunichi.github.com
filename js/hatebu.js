@@ -56,10 +56,19 @@ $(function(){
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
+/*
 	$.getJSON("http://kjunurl2015.appspot.com/mkly?url="+encodeURIComponent(turl)+"&callback=?")
 	.done(function(data) {
 	   doMyFunc(data.html);
 	});
+*/
+function cb(data) {
+  doMyFunc(data.html);
+}
+var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
+const s = document.createElement("script");
+s.src="http://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
+document.body.appendChild(s);
 	
     
 });

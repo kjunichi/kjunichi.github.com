@@ -3,6 +3,6 @@ Hello!
 
 Twitter: @kjunichi
 
-Blog: http://kjunichi.cocolog-nifty.com/misc/
+Blog: http://abrakatabura.hatenablog.com/
 
 Jsdo.it: http://jsdo.it/kjunichi/

@@ -19,4 +19,4 @@ Module['preRun'].push(function () {
 			true,
 			false
 			);
-);
+});

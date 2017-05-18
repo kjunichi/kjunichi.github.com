@@ -16,7 +16,7 @@
      elm.value=distText;
   }
   window.addEventListener("load", () => {
-    const elm = document.getElementById("");
+    const elm = document.getElementById("btn");
     elm.addEventListener("click", () => {
       run();
     },false);

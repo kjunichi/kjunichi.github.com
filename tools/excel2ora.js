@@ -1,8 +1,7 @@
 (function(){
-  
   window.addEventListener("load", () => {
-    const elm = document.getElementById("btn");
-    elm.addEventListener("click", () => {
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", () => {
       var srcText = document.getElementById("src").value;
       var distText="";
        //console.log(srcText);
@@ -16,8 +15,7 @@
        }
        distText += "\n"
        var elm = document.getElementById("dist");
-       elm.value=distText;
-  }
-    },false);
+       elm.value=distText;     
+    }, false);
   },false);
 })();

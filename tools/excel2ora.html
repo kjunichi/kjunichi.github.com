@@ -1,5 +1,4 @@
 <!DOCTYPE html>
- 
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -11,23 +10,6 @@
         <button onclick="run()">OK</button>
         <textarea id="src"></textarea>
         <textarea id="dist"></textarea>
-<script>
-function run() {
-   var srcText = document.getElementById("src").value;
-   var distText="";
-   //console.log(srcText);
-   var lines = srcText.split("\n");
-   if(lines[0].length === 0) {
-       return;
-   }
-   distText += "'" + lines[0]+ "\'"
-   for(var i = 1; i < lines.length; i++) {
-      distText += ",\n\'" + lines[i]+ "\'"
-   }
-   distText += "\n"
-   var elm = document.getElementById("dist");
-   elm.value=distText;
-}
-</script>
+        <script src="./excel2ora.js"></script>
     </body>
 </html>

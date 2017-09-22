@@ -28,7 +28,7 @@
                             video.srcObject = stream;
                             video.play();
                             streaming = true;
-                            myDraw();
+                            requestAnimationFrame(myDraw);
                         })
                     .catch(function(err) {
                         alert("An error occured! " + err);
@@ -87,7 +87,8 @@
                 context.strokeRect(comp[i].x, comp[i].y, comp[i].width, comp[i].height);
                 //ctx2.drawImage(img,comp[i].x, comp[i].y, comp[i].width, comp[i].height,0,0,160,120);
             }
-            setTimeout(myDraw, 500);
+            requestAnimationFrame(myDraw);
+            //setTimeout(myDraw, 500);
             //setImmediate(myDraw);
         }
     </script>

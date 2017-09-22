@@ -12,7 +12,7 @@
         setTimeout(() => {
             video.removeAttribute("controls");
         });
-        
+
         var localstream;
 
         function start() {
@@ -44,37 +44,58 @@
                     }
                 );
                 */
-                var p = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+                navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+                    getUserMedia: function(c) {
+                        return new Promise(function(y, n) {
+                            (navigator.mozGetUserMedia ||
+                                navigator.webkitGetUserMedia).call(navigator, c, y, n);
+                        });
+                    }
+                } : null);
 
-                p.then(function(stream) {
-                    //var video = document.querySelector('video');
-                    video.src = window.URL.createObjectURL(mediaStream);
-                    video.onloadedmetadata = function(e) {
-                        // Do something with the video here.
-                    };
+                if (!navigator.mediaDevices) {
+                    console.log("getUserMedia() not supported.");
+                    return;
+                }
+
+                // Prefer camera resolution nearest to 1280x720.
+
+                var constraints = {
+                    audio: true,
+                    video: {
+                        width: 1280,
+                        height: 720
+                    }
                 };
 
-p.catch(function(e) { console.log(e.name); });
-            } else if (navigator.getUserMedia) {
-                navigator.getUserMedia("audio, video", success, error);
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        //var video = document.querySelector('video');
+                        video.src = window.URL.createObjectURL(stream);
+                        video.onloadedmetadata = function(e) {
+                            video.play();
+                        };
+                    })
+                    .catch(function(err) {
+                        console.log(err.name + ": " + err.message);
+                    });
+
             }
-        }
 
 
-        function stop() {
-            console.log("stop start");
-            if (video.mozSrcObject) {
-                //video.mozSrcObject.stop();
-                video.pause();
-                video.mozSrcObject = null;
-            } else {
-                if (localstream) {
-                    localstream.stop();
+            function stop() {
+                console.log("stop start");
+                if (video.mozSrcObject) {
+                    //video.mozSrcObject.stop();
+                    video.pause();
+                    video.mozSrcObject = null;
+                } else {
+                    if (localstream) {
+                        localstream.stop();
+                    }
                 }
+                console.log("stop end");
             }
-            console.log("stop end");
-        }
     </script>
 </body>
-
 </html>

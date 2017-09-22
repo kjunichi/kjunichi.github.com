@@ -29,6 +29,7 @@
                 }, function(error) {});
             } else if (navigator.mediaDevices.getUserMedia) {
                 alert("navigator.mediaDevices.getUserMedia");
+                /*
                 navigator.mediaDevices.getUserMedia({
                         video: true
                     },
@@ -42,6 +43,18 @@
                         alert("An error occured! " + err);
                     }
                 );
+                */
+                var p = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+
+                p.then(function(stream) {
+                    //var video = document.querySelector('video');
+                    video.src = window.URL.createObjectURL(mediaStream);
+                    video.onloadedmetadata = function(e) {
+                        // Do something with the video here.
+                    };
+                };
+
+p.catch(function(e) { console.log(e.name); });
             } else if (navigator.getUserMedia) {
                 navigator.getUserMedia("audio, video", success, error);
             }

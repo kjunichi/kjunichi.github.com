@@ -21,7 +21,7 @@
     <script type="text/javascript">
         const video = document.getElementById("world");
         const dispCs = document.getElementById("disp");
-        const dispCtx = dispCs.getContext('2d');
+        let dispCtx;
         
         function start() {
             if (navigator.mediaDevices.getUserMedia) {
@@ -45,7 +45,7 @@
                             
                             dispCs.width = video.videoWidth / 2;
                             dispCs.height = video.videoHeight / 2;
-           
+                            dispCtx = dispCs.getContext('2d');
                             requestAnimationFrame(myDraw);
                         })
                     .catch(function(err) {

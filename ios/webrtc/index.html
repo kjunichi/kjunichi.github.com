@@ -6,6 +6,13 @@
     <button onClick="stop()">stop</button>
     <script type="text/javascript">
         var video = document.getElementById("world");
+        // Hacks for Mobile Safari
+video.setAttribute("playsinline", true);
+video.setAttribute("controls", true);
+setTimeout(() => {
+    video.removeAttribute("controls");
+});
+        
         var localstream;
 
         function start() {

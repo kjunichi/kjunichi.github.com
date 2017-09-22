@@ -21,7 +21,7 @@
     <script type="text/javascript">
         const video = document.getElementById("world");
         const dispCs = document.getElementById("disp");
-        const dispCtx = dispCs.getContext('2d');
+        
         
         function start() {
             if (navigator.mediaDevices.getUserMedia) {
@@ -99,8 +99,8 @@
             });
 
             //showMsg("Elapsed time : " + ((new Date()).getTime() - s).toString() + "ms");
-            context.lineWidth = 3;
-            context.strokeStyle = "#f00";
+            dispCtx.lineWidth = 3;
+            dispCtx.strokeStyle = "#f00";
             for (var i = 0; i < comp.length; i++) {
                 dispCtx.strokeRect(comp[i].x, comp[i].y, comp[i].width, comp[i].height);
                 //ctx2.drawImage(img,comp[i].x, comp[i].y, comp[i].width, comp[i].height,0,0,160,120);

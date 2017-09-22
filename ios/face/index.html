@@ -21,7 +21,7 @@
     <script type="text/javascript">
         const video = document.getElementById("world");
         const dispCs = document.getElementById("disp");
-        
+        const dispCtx = dispCs.getContext('2d');
         
         function start() {
             if (navigator.mediaDevices.getUserMedia) {

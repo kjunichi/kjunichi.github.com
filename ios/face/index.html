@@ -19,8 +19,8 @@
     <button onClick="start()">start</button>
     <button onClick="stop()">stop</button>
     <script type="text/javascript">
-        var video = document.getElementById("world");
-        var dispCs = document.getElementById("disp");
+        const video = document.getElementById("world");
+        const dispCs = document.getElementById("disp");
 
         function start() {
             if (navigator.mediaDevices.getUserMedia) {
@@ -67,8 +67,8 @@
 
             hiddenCanvas.width = video.videoWidth / 2;
             hiddenCanvas.height = video.videoHeight / 2;
-            console.log("hiddenCanvas.width = " + hiddenCanvas.width);
-            console.log("hiddenCanvas.height = " + hiddenCanvas.height);
+            //console.log("hiddenCanvas.width = " + hiddenCanvas.width);
+            //console.log("hiddenCanvas.height = " + hiddenCanvas.height);
             if (hiddenCanvas.width === 0) {
                 setTimeout(myDraw, 1000);
                 return;

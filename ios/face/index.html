@@ -21,7 +21,8 @@
     <script type="text/javascript">
         const video = document.getElementById("world");
         const dispCs = document.getElementById("disp");
-
+        const dispCtx = dispCs.getContext('2d');
+        
         function start() {
             if (navigator.mediaDevices.getUserMedia) {
                 //alert("navigator.mediaDevices.getUserMedia");
@@ -41,6 +42,10 @@
                             video.srcObject = stream;
                             video.play();
                             streaming = true;
+                            
+                            dispCs.width = video.videoWidth / 2;
+                            dispCs.height = video.videoHeight / 2;
+           
                             requestAnimationFrame(myDraw);
                         })
                     .catch(function(err) {
@@ -63,31 +68,31 @@
         }
 
         function myDraw() {
-            var hiddenCanvas = document.createElement('canvas');
+            //var hiddenCanvas = document.createElement('canvas');
 
-            hiddenCanvas.width = video.videoWidth / 2;
-            hiddenCanvas.height = video.videoHeight / 2;
+            //hiddenCanvas.width = video.videoWidth / 2;
+            //hiddenCanvas.height = video.videoHeight / 2;
             //console.log("hiddenCanvas.width = " + hiddenCanvas.width);
             //console.log("hiddenCanvas.height = " + hiddenCanvas.height);
+            /*
             if (hiddenCanvas.width === 0) {
                 setTimeout(myDraw, 1000);
                 return;
-            }
-            var context = hiddenCanvas.getContext('2d');
-            context.drawImage(video, 0, 0, hiddenCanvas.width, hiddenCanvas.height);
+            }*/
+            
+            //var context = hiddenCanvas.getContext('2d');
+            //context.drawImage(video, 0, 0, hiddenCanvas.width, hiddenCanvas.height);
 
-            dispCs.width = video.videoWidth / 2;
-            dispCs.height = video.videoHeight / 2;
-            context = dispCs.getContext('2d');
-            context.drawImage(video, 0, 0, dispCs.width, dispCs.height);
+           
+            dispCtx.drawImage(video, 0, 0, dispCs.width, dispCs.height);
 
-            var s = (new Date()).getTime();
+            //var s = (new Date()).getTime();
             //showMsg("Detecting ...");
 
             // 顔検出
             var comp = ccv.detect_objects({
                 //"canvas": ccv.grayscale(ccv.pre(video)),
-                "canvas": ccv.grayscale(hiddenCanvas),
+                "canvas": ccv.grayscale(dispCs),
                 "cascade": cascade,
                 "interval": 5,
                 "min_neighbors": 1
@@ -97,7 +102,7 @@
             context.lineWidth = 3;
             context.strokeStyle = "#f00";
             for (var i = 0; i < comp.length; i++) {
-                context.strokeRect(comp[i].x, comp[i].y, comp[i].width, comp[i].height);
+                dispCtx.strokeRect(comp[i].x, comp[i].y, comp[i].width, comp[i].height);
                 //ctx2.drawImage(img,comp[i].x, comp[i].y, comp[i].width, comp[i].height,0,0,160,120);
             }
             requestAnimationFrame(myDraw);

@@ -7,11 +7,11 @@
     <script type="text/javascript">
         var video = document.getElementById("world");
         // Hacks for Mobile Safari
-video.setAttribute("playsinline", true);
-video.setAttribute("controls", true);
-setTimeout(() => {
-    video.removeAttribute("controls");
-});
+        video.setAttribute("playsinline", true);
+        video.setAttribute("controls", true);
+        setTimeout(() => {
+            video.removeAttribute("controls");
+        });
         
         var localstream;
 
@@ -28,12 +28,13 @@ setTimeout(() => {
                     console.log("video.videoWidth = ", video.videoWidth);
                 }, function(error) {});
             } else if (navigator.mediaDevices.getUserMedia) {
+                alert("navigator.mediaDevices.getUserMedia");
                 navigator.mediaDevices.getUserMedia({
                         video: true
                     },
                     function(stream) {
-
-                        video.mozSrcObject = stream;
+                        //video.mozSrcObject = stream;
+                        video.src = window.URL.createObjectURL(stream);
                         video.play();
                         streaming = true;
                     },

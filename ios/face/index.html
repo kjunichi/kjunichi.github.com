@@ -12,6 +12,10 @@
 
     <video id="world" width="256" height="256" autoplay playsinline></video>
     <canvas id="disp"></canvas>
+    <p>Camera<br>
+        <input type="radio" name="camtype" value="back" checked>背面
+        <input type="radio" name="camtype" value="default">デフォルト
+    </p>
     <button onClick="start()">start</button>
     <button onClick="stop()">stop</button>
     <script type="text/javascript">
@@ -21,13 +25,17 @@
         function start() {
             if (navigator.mediaDevices.getUserMedia) {
                 //alert("navigator.mediaDevices.getUserMedia");
-                navigator.mediaDevices.getUserMedia({
-                        video: {
+                let settings;
+                if(document.getElementsByName("camtype")[0].checked === true) {
+                    settings = {video: {
                             facingMode: {
                                 exact: "environment"
                             }
-                        }
-                    })
+                        }};
+                } else {
+                    settings = {video: true};
+                }
+                navigator.mediaDevices.getUserMedia(settings)
                     .then(
                         function(stream) {
                             video.srcObject = stream;

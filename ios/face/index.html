@@ -1,0 +1,95 @@
+<html>
+
+<body>
+    <script src="//gentle-galaxy-5463.herokuapp.com/setImmediate.js" type="text/javascript"></script>
+    <script src="//gentle-galaxy-5463.herokuapp.com/ccv.js" type="text/javascript"></script>
+    <script src="//gentle-galaxy-5463.herokuapp.com/face.js" type="text/javascript"></script>
+
+    <video id='world' width="256" height="256" autoplay></video>
+    <canvas id="disp"></canvas>
+    <button onClick="start()">start</button>
+    <button onClick="stop()">stop</button>
+    <script type="text/javascript">
+        var video = document.getElementById("world");
+        var dispCs = document.getElementById("disp");
+
+        function start() {
+            if (navigator.mediaDevices.getUserMedia) {
+                //alert("navigator.mediaDevices.getUserMedia");
+                navigator.mediaDevices.getUserMedia({
+                        video: {
+                            facingMode: {
+                                exact: "environment"
+                            }
+                        }
+                    })
+                    .then(
+                        function(stream) {
+                            video.srcObject = stream;
+                            video.play();
+                            streaming = true;
+                            myDraw();
+                        })
+                    .catch(function(err) {
+                        alert("An error occured! " + err);
+                    });
+            }
+        }
+
+        function stop() {
+            console.log("stop start");
+            if (video.srcObject) {
+                video.pause();
+                video.srcObject = null;
+            } else {
+                if (localstream) {
+                    localstream.stop();
+                }
+            }
+            console.log("stop end");
+        }
+
+        function myDraw() {
+            var hiddenCanvas = document.createElement('canvas');
+
+            hiddenCanvas.width = video.videoWidth / 2;
+            hiddenCanvas.height = video.videoHeight / 2;
+            console.log("hiddenCanvas.width = " + hiddenCanvas.width);
+            console.log("hiddenCanvas.height = " + hiddenCanvas.height);
+            if (hiddenCanvas.width === 0) {
+                setTimeout(myDraw, 1000);
+                return;
+            }
+            var context = hiddenCanvas.getContext('2d');
+            context.drawImage(video, 0, 0, hiddenCanvas.width, hiddenCanvas.height);
+
+            dispCs.width = video.videoWidth / 2;
+            dispCs.height = video.videoHeight / 2;
+            context = dispCs.getContext('2d');
+            context.drawImage(video, 0, 0, dispCs.width, dispCs.height);
+
+            var s = (new Date()).getTime();
+            //showMsg("Detecting ...");
+
+            // 顔検出
+            var comp = ccv.detect_objects({
+                //"canvas": ccv.grayscale(ccv.pre(video)),
+                "canvas": ccv.grayscale(hiddenCanvas),
+                "cascade": cascade,
+                "interval": 5,
+                "min_neighbors": 1
+            });
+
+            //showMsg("Elapsed time : " + ((new Date()).getTime() - s).toString() + "ms");
+            context.lineWidth = 3;
+            context.strokeStyle = "#f00";
+            for (var i = 0; i < comp.length; i++) {
+                context.strokeRect(comp[i].x, comp[i].y, comp[i].width, comp[i].height);
+                //ctx2.drawImage(img,comp[i].x, comp[i].y, comp[i].width, comp[i].height,0,0,160,120);
+            }
+            //setTimeout(myDraw, 500);
+            setImmediate(myDraw);
+        }
+    </script>
+
+</body>

@@ -43,8 +43,8 @@
                             video.play();
                             streaming = true;
                             
-                            dispCs.width = video.videoWidth / 2;
-                            dispCs.height = video.videoHeight / 2;
+                            dispCs.width = 128
+                            dispCs.height = 128;
                             dispCtx = dispCs.getContext('2d');
                             requestAnimationFrame(myDraw);
                         })

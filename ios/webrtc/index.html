@@ -29,37 +29,37 @@
                 }, function(error) {});
             } else if (navigator.mediaDevices.getUserMedia) {
                 //alert("navigator.mediaDevices.getUserMedia");
-                
+
                 navigator.mediaDevices.getUserMedia({
                         video: true
-                    },
-                    function(stream) {
-                        video.srcObject = stream;
-                        //video.src = window.URL.createObjectURL(stream);
-                        video.play();
-                        streaming = true;
-                    },
-                    function(err) {
+                    })
+                    .then(
+                        function(stream) {
+                            video.srcObject = stream;
+                            //video.src = window.URL.createObjectURL(stream);
+                            video.play();
+                            streaming = true;
+                        })
+                    .catch(function(err) {
                         alert("An error occured! " + err);
-                    }
-                );
-                
+                    });
             }
         }
 
-         function stop() {
-                console.log("stop start");
-                if (video.mozSrcObject) {
-                    //video.mozSrcObject.stop();
-                    video.pause();
-                    video.mozSrcObject = null;
-                } else {
-                    if (localstream) {
-                        localstream.stop();
-                    }
+        function stop() {
+            console.log("stop start");
+            if (video.mozSrcObject) {
+                //video.mozSrcObject.stop();
+                video.pause();
+                video.mozSrcObject = null;
+            } else {
+                if (localstream) {
+                    localstream.stop();
                 }
-                console.log("stop end");
-         }
+            }
+            console.log("stop end");
+        }
     </script>
 </body>
+
 </html>

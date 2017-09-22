@@ -31,7 +31,7 @@
                 //alert("navigator.mediaDevices.getUserMedia");
 
                 navigator.mediaDevices.getUserMedia({
-                        video: { facingMode:"environment"}
+                        video: { facingMode: {exact : "environment"}}
                     })
                     .then(
                         function(stream) {

@@ -1,52 +1,59 @@
-<video id='world' width="256" height="256" autoplay></video>
-<button onClick="start()">start</button>
-<button onClick="stop()">stop</button>
-<script type="text/javascript">
-var video = document.getElementById("world");
-var localstream;
+<html>
 
-function start() {
-if(navigator.webkitGetUserMedia) {
-    navigator.webkitGetUserMedia({audio:true, video:true}, function(stream) {
-        localstream=stream;
-console.dir(stream.getVideoTracks()[0]);
-        var url = window.webkitURL.createObjectURL(stream);
-	video.src = url;
-        console.log("video.videoWidth = ",video.videoWidth);
-    },function (error){});
-} else if(navigator.mozGetUserMedia){
-     navigator.mozGetUserMedia(
-{video: true},
-function(stream) {
+<body>
+    <video id='world' width="256" height="256" autoplay></video>
+    <button onClick="start()">start</button>
+    <button onClick="stop()">stop</button>
+    <script type="text/javascript">
+        var video = document.getElementById("world");
+        var localstream;
 
-    video.mozSrcObject=stream;
-video.play();
-streaming = true;
-},
-function(err) {
-alert("An error occured! " + err);
-}
-);
-} else if(navigator.getUserMedia) {
-navigator.getUserMedia("audio, video", success, error);
-}
-}
+        function start() {
+            if (navigator.webkitGetUserMedia) {
+                navigator.webkitGetUserMedia({
+                    audio: true,
+                    video: true
+                }, function(stream) {
+                    localstream = stream;
+                    console.dir(stream.getVideoTracks()[0]);
+                    var url = window.webkitURL.createObjectURL(stream);
+                    video.src = url;
+                    console.log("video.videoWidth = ", video.videoWidth);
+                }, function(error) {});
+            } else if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({
+                        video: true
+                    },
+                    function(stream) {
+
+                        video.mozSrcObject = stream;
+                        video.play();
+                        streaming = true;
+                    },
+                    function(err) {
+                        alert("An error occured! " + err);
+                    }
+                );
+            } else if (navigator.getUserMedia) {
+                navigator.getUserMedia("audio, video", success, error);
+            }
+        }
 
 
-function stop() {
-    console.log("stop start");
-    if(video.mozSrcObject) {
-            //video.mozSrcObject.stop();
-        video.pause();
-      video.mozSrcObject = null;
-    } else {
-    if(localstream) {
-        localstream.stop();
-    }
-    }
-     
-    
-   
-    console.log("stop end");
-}
-</script>
+        function stop() {
+            console.log("stop start");
+            if (video.mozSrcObject) {
+                //video.mozSrcObject.stop();
+                video.pause();
+                video.mozSrcObject = null;
+            } else {
+                if (localstream) {
+                    localstream.stop();
+                }
+            }
+            console.log("stop end");
+        }
+    </script>
+</body>
+
+</html>

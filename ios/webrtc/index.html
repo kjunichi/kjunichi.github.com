@@ -6,28 +6,21 @@
     <button onClick="stop()">stop</button>
     <script type="text/javascript">
         var video = document.getElementById("world");
+        
+        // form: https://github.com/webrtc/samples/issues/929
         // Hacks for Mobile Safari
         video.setAttribute("playsinline", true);
+        /*
         video.setAttribute("controls", true);
         setTimeout(() => {
             video.removeAttribute("controls");
         });
-
+        */
+        
         var localstream;
 
         function start() {
-            if (navigator.webkitGetUserMedia) {
-                navigator.webkitGetUserMedia({
-                    audio: true,
-                    video: true
-                }, function(stream) {
-                    localstream = stream;
-                    console.dir(stream.getVideoTracks()[0]);
-                    var url = window.webkitURL.createObjectURL(stream);
-                    video.src = url;
-                    console.log("video.videoWidth = ", video.videoWidth);
-                }, function(error) {});
-            } else if (navigator.mediaDevices.getUserMedia) {
+            if (navigator.mediaDevices.getUserMedia) {
                 //alert("navigator.mediaDevices.getUserMedia");
 
                 navigator.mediaDevices.getUserMedia({
@@ -36,7 +29,6 @@
                     .then(
                         function(stream) {
                             video.srcObject = stream;
-                            //video.src = window.URL.createObjectURL(stream);
                             video.play();
                             streaming = true;
                         })
@@ -48,10 +40,9 @@
 
         function stop() {
             console.log("stop start");
-            if (video.mozSrcObject) {
-                //video.mozSrcObject.stop();
+            if (video.srcObject) {
                 video.pause();
-                video.mozSrcObject = null;
+                video.srcObject = null;
             } else {
                 if (localstream) {
                     localstream.stop();

@@ -1,5 +1,5 @@
 // hatebu.js
-var t=0;
+let t=0;
 let timerId;
 function doMyFunc(inText) {
     const parser = new DOMParser();

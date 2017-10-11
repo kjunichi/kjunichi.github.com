@@ -1,6 +1,7 @@
 // hatebu.js
 let t=0;
 let timerId;
+
 function doMyFunc(inText) {
     const parser = new DOMParser();
     const dom = parser.parseFromString(inText, "text/xml");
@@ -15,7 +16,7 @@ function doMyFunc(inText) {
         let linkurl = "";
         for(let j = 0; j < linkUrls.length; j++) {
             if(linkUrls[j].getAttribute("rel") == "related") {
-            linkurl = linkUrls[j].getAttribute("href");
+                linkurl = linkUrls[j].getAttribute("href");
             }
         }
         if(savedIssuedDate != issuedDate) {

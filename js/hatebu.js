@@ -3,12 +3,12 @@ var t=0;
 let timerId;
 function doMyFunc(inText) {
 	
-    var parser = new DOMParser();
+    const parser = new DOMParser();
     var dom = parser.parseFromString(inText, "text/xml");
     var entries = dom.getElementsByTagName("entry");
     var savedIssuedDate = "";
     var ul = "";
-    for(var i = 0; i < entries.length; i++) {  	
+    for(let i = 0; i < entries.length; i++) {
 	var issued = entries[i].getElementsByTagName("issued")[0].textContent;
 	var issuedDate = issued.split("T")[0];
 	var title = entries[i].getElementsByTagName("title")[0].textContent;
@@ -29,14 +29,14 @@ function doMyFunc(inText) {
 	    ul = $('<ul/>');
 	    savedIssuedDate = issuedDate;
 	}
-	$('<li/>').html('<a href="'+linkurl+'">' + title +'</a>').appendTo(ul);
+	$('<li/>').html(`<a href="${linkurl}">${title}</a>`).appendTo(ul);
     }
     if(ul !== "") {
 		$('#hatebu').append(ul);
 	}
 	clearInterval(timerId);
 	$('#hateprogressBar').css("width","100%");
-	var elm = document.getElementById("hateprogress");
+	const elm = document.getElementById("hateprogress");
 	elm.parentNode.removeChild(elm);
 }
 
@@ -45,8 +45,7 @@ function cb(data) {
 }
 
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG
-$(function(){
-  
+$(function(){ 
 	const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 	$('#outHtml').text("Fetching...");
 	timerId = setInterval(function() {
@@ -54,7 +53,6 @@ $(function(){
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
-	//var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 	const s = document.createElement("script");
 	s.src="https://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
 	document.body.appendChild(s);

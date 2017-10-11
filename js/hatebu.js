@@ -23,7 +23,7 @@ function doMyFunc(inText) {
             if(ul !== "") {
                 $('#hatebu').append(ul);
             }
-            var tmp = issuedDate.split('-');
+            const tmp = issuedDate.split('-');
             $('#hatebu').append(`<div class="date"><p><span class="year">${tmp[0]}年</span>`
                              + `<span class="month">${tmp[1]}月</span><span class="day">${tmp[2]}日</span></p></div>`);
             ul = $('<ul/>');

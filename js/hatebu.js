@@ -48,9 +48,9 @@ function cb(data) {
 $(function(){ 
 	const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 	$('#outHtml').text("Fetching...");
-	timerId = setInterval(function() {
+	timerId = setInterval(() => {
 		t=t+0.2;
-		var r = (1-1/(t+1))*100;
+		const r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
 	const s = document.createElement("script");

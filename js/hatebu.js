@@ -2,34 +2,33 @@
 var t=0;
 let timerId;
 function doMyFunc(inText) {
-	
     const parser = new DOMParser();
-    var dom = parser.parseFromString(inText, "text/xml");
-    var entries = dom.getElementsByTagName("entry");
-    var savedIssuedDate = "";
-    var ul = "";
+    const dom = parser.parseFromString(inText, "text/xml");
+    const entries = dom.getElementsByTagName("entry");
+    let savedIssuedDate = "";
+    let ul = "";
     for(let i = 0; i < entries.length; i++) {
-	var issued = entries[i].getElementsByTagName("issued")[0].textContent;
-	var issuedDate = issued.split("T")[0];
-	var title = entries[i].getElementsByTagName("title")[0].textContent;
-	var linkUrls = entries[i].getElementsByTagName("link");
-	var linkurl = "";
-	for(var j = 0; j < linkUrls.length; j++) {
-	    if(linkUrls[j].getAttribute("rel") == "related") {
-		linkurl = linkUrls[j].getAttribute("href");
-	    }
-	}
-	if(savedIssuedDate != issuedDate) {
-	    if(ul !== "") {
-		$('#hatebu').append(ul);
-	    }
-        var tmp = issuedDate.split('-');
-	    $('#hatebu').append(`<div class="date"><p><span class="year">${tmp[0]}年</span>`
-                         + `<span class="month">${tmp[1]}月</span><span class="day">${tmp[2]}日</span></p></div>`);
-	    ul = $('<ul/>');
-	    savedIssuedDate = issuedDate;
-	}
-	$('<li/>').html(`<a href="${linkurl}">${title}</a>`).appendTo(ul);
+        const issued = entries[i].getElementsByTagName("issued")[0].textContent;
+        const issuedDate = issued.split("T")[0];
+        const title = entries[i].getElementsByTagName("title")[0].textContent;
+        const linkUrls = entries[i].getElementsByTagName("link");
+        let linkurl = "";
+        for(let j = 0; j < linkUrls.length; j++) {
+            if(linkUrls[j].getAttribute("rel") == "related") {
+            linkurl = linkUrls[j].getAttribute("href");
+            }
+        }
+        if(savedIssuedDate != issuedDate) {
+            if(ul !== "") {
+                $('#hatebu').append(ul);
+            }
+            var tmp = issuedDate.split('-');
+            $('#hatebu').append(`<div class="date"><p><span class="year">${tmp[0]}年</span>`
+                             + `<span class="month">${tmp[1]}月</span><span class="day">${tmp[2]}日</span></p></div>`);
+            ul = $('<ul/>');
+            savedIssuedDate = issuedDate;
+        }
+	    $('<li/>').html(`<a href="${linkurl}">${title}</a>`).appendTo(ul);
     }
     if(ul !== "") {
 		$('#hatebu').append(ul);
@@ -41,7 +40,7 @@ function doMyFunc(inText) {
 }
 
 function cb(data) {
-  doMyFunc(data.html);
+	doMyFunc(data.html);
 }
 
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG

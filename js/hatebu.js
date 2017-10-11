@@ -1,6 +1,6 @@
 // hatebu.js
 var t=0;
-var timerId;
+let timerId;
 function doMyFunc(inText) {
 	
     var parser = new DOMParser();
@@ -8,10 +8,7 @@ function doMyFunc(inText) {
     var entries = dom.getElementsByTagName("entry");
     var savedIssuedDate = "";
     var ul = "";
-    for(var i = 0; i < entries.length; i++) {
-    	//var barVal = i/entries.length*100;
-    	//$('#hateprogressBar').css("width",barVal+"%");
-    	
+    for(var i = 0; i < entries.length; i++) {  	
 	var issued = entries[i].getElementsByTagName("issued")[0].textContent;
 	var issuedDate = issued.split("T")[0];
 	var title = entries[i].getElementsByTagName("title")[0].textContent;
@@ -53,23 +50,15 @@ function cb(data) {
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG
 $(function(){
   
-	var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
+	const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
 	$('#outHtml').text("Fetching...");
 	timerId = setInterval(function() {
 		t=t+0.2;
 		var r = (1-1/(t+1))*100;
 		$('#hateprogressBar').css("width",r+"%");
 	},300);
-/*
-	$.getJSON("http://kjunurl2015.appspot.com/mkly?url="+encodeURIComponent(turl)+"&callback=?")
-	.done(function(data) {
-	   doMyFunc(data.html);
-	});
-*/
-var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
-const s = document.createElement("script");
-s.src="https://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
-document.body.appendChild(s);
-	
-    
+	//var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
+	const s = document.createElement("script");
+	s.src="https://kjunurl2015.appspot.com/gethtml?t=1&url="+encodeURIComponent(turl)+"&callback=cb";
+	document.body.appendChild(s);
 });

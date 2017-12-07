@@ -9,6 +9,7 @@
 		<p id="status">OpenCV.js is loading...</p>
 		<div>
 			<div class="inputoutput">
+				<button id="btn">test</button>
 			</div>
 			<div class="inputoutput">
 				<canvas id="canvasOutput" width="128" height="128" ></canvas>
@@ -16,8 +17,8 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-function onOpenCvReady() {
-  document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+const b = document.getElementById("btn");
+b.addEventListener("click",(e)=>{
   const src = new cv.Mat(128,128,cv.CV_8UC3);
   
   for(let j = 0; j < 128; j++){ 
@@ -26,6 +27,12 @@ function onOpenCvReady() {
     }
   }
   cv.imshow("canvasOutput", src);
+  src.delete();
+});
+			
+function onOpenCvReady() {
+  document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+  
 }
 		</script>
 		<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>

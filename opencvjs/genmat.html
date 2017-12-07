@@ -9,20 +9,18 @@
 		<p id="status">OpenCV.js is loading...</p>
 		<div>
 			<div class="inputoutput">
-				<img id="imageSrc" alt="No Image" />
-				<div class="caption">imageSrc <input type="file" id="fileInput" name="file" /></div>
 			</div>
 			<div class="inputoutput">
-				<canvas id="canvasOutput" ></canvas>
+				<canvas id="canvasOutput" width="128" height="128" ></canvas>
 				<div class="caption">canvasOutput</div>
 			</div>
 		</div>
 		<script type="text/javascript">
 function onOpenCvReady() {
-	document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-  const src = new cv.Mat(32,32,cv.CV_8UC3);
+  document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+  const src = new cv.Mat(128,128,cv.CV_8UC3);
   
-  for(let j = 0; j < 32; j++){ 
+  for(let j = 0; j < 128; j++){ 
     for(let i = 0; i < 32; i++) {
       src.data[j * src.cols * src.channels() + i * src.channels()]=128;
     }

@@ -24,8 +24,8 @@ b.addEventListener("click",(e)=>{
   for(let j = 0; j < 128; j++){ 
     for(let i = 0; i < 32; i++) {
       src.data[j * src.cols * src.channels() + i * src.channels()]=j*2;
-      src.data[j * src.cols * src.channels() + i * src.channels()+1]=i*64;
-      src.data[j * src.cols * src.channels() + i * src.channels()+2]=i*32;
+      src.data[j * src.cols * src.channels() + i * src.channels()+1]=0;//i*64;
+      src.data[j * src.cols * src.channels() + i * src.channels()+2]=0;//i*32;
     }
   }
   cv.imshow("canvasOutput", src);

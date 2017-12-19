@@ -53,7 +53,8 @@ function addMesh() {
 
         // onLoad callback
         ( geometry, materials ) => {
-            const material = materials[ 0 ];
+            //const material = materials[ 0 ];
+
             const object = new THREE.Mesh( geometry, material );
             scene.add( object );
             object.scale.multiplyScalar(101);

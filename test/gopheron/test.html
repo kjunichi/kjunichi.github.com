@@ -1,0 +1,72 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+
+var camera, scene, renderer;
+var geometry, material, mesh;
+
+init();
+animate();
+addMesh();
+function init() {
+
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+    camera.position.z = 1;
+
+    scene = new THREE.Scene();
+
+    geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
+    material = new THREE.MeshNormalMaterial();
+
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+}
+
+function animate() {
+
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+
+}
+function addMesh() {
+    // instantiate a loader
+    var loader = new THREE.JSONLoader();
+
+    // load a resource
+    loader.load(
+        // resource URL
+        'models/gopher_slimdataEL.json',
+
+        // onLoad callback
+        ( geometry, materials ) => {
+            const material = materials[ 0 ];
+            const object = new THREE.Mesh( geometry, material );
+            scene.add( object );
+        },
+
+        // onProgress callback
+        function ( xhr ) {
+            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+        },
+
+        // onError callback
+        function( err ) {
+            console.log( 'An error happened' );
+        }
+    );
+}
+        </script>
+    </body>
+</html>
+

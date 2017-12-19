@@ -54,10 +54,10 @@ function addMesh() {
         // onLoad callback
         ( geometry, materials ) => {
             //const material = materials[ 0 ];
-            geom.computeFaceNormals();
-            geom.computeVertexNormals();
+            geometry.computeFaceNormals();
+            geometry.computeVertexNormals();
 
-            geom.computeBoundingBox();
+            geometry.computeBoundingBox();
 
             const object = new THREE.Mesh( geometry, material );
             scene.add( object );

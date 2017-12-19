@@ -5,12 +5,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
         <script>
 
-var camera, scene, renderer;
-var geometry, material, mesh;
+let camera, scene, renderer;
+let geometry, material, mesh;
 
 init();
 animate();
 addMesh();
+
 function init() {
 
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
@@ -22,6 +23,7 @@ function init() {
     material = new THREE.MeshNormalMaterial();
 
     mesh = new THREE.Mesh( geometry, material );
+    mesh.scale.multiplyScalar(0.1);
     scene.add( mesh );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );

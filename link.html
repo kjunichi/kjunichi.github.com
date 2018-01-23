@@ -1,0 +1,16 @@
+<html>
+<body>
+    <a href="http://kjunurl2015.appspot.com/ykoV?p=REFERER">test</a>
+    <div id="out"></div>
+<script>
+
+
+	Object.defineProperty(document,'referrer',{
+    	value:"http://www.test.com/kjunichi"
+    	
+	});
+	const elm = document.getElementById("out");
+	elm.innerHTML = document.referrer;
+</script>
+</body>
+</html>

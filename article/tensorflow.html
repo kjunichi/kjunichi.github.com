@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="main"></div>
+<script>
+const url="https://gist.github.com/kjunichi/a0c99a6ad022ed509e916ae01b26c357";
+fetch(url)
+.then((res)=>{
+return response.blob();
+})
+.then((blob)=>{ 
+  const reader = new FileReader();
+  reader.addEventListener("loadend", (text)=> {
+    const elm = document.getElementById("main");
+    elm.innderHTML = text;
+  });
+  reader.readAsText(blob);
+})
+
+</script>
+</body>
+</html>

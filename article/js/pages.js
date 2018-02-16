@@ -3,7 +3,7 @@ pagetitles:[
 {"title":"linux",
 "key":"6374047"},
 {"title":"macos",
-"key","6017741"}
+"key":"6017741"}
 ]
 };
 const getKey = (h)=>{

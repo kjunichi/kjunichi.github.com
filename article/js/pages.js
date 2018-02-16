@@ -6,7 +6,9 @@ pagetitles:[
 "key":"6017741"}
 ]
 };
+
 const getKey = (h)=>{
+  console.dir(index);
   for(const item of index.pagetitles) {
     if(item.title === h.toLowerCase()) {
       return item.key;

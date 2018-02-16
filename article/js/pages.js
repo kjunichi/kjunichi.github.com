@@ -8,12 +8,13 @@ pagetitles:[
 };
 const getKey = (h)=>{
   for(const item of index.pagetitles) {
-    if(item.title === toLowerCase(h)) {
+    if(item.title === h.toLowerCase()) {
       return item.key;
     }
   }
   return null;
 };
+
 console.log(location.hash);
 if(location.hash) {
   const hash = location.hash.substring(1);

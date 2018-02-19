@@ -20,7 +20,7 @@ const getKey = (h)=>{
 const getDateStr = () => {
   const now = Date.now();
   const m = ("0" + (now.getMonth() + 1)).slice(-2);
-  condt d = ("0" + now.getDate()).slice(-2);
+  const d = ("0" + now.getDate()).slice(-2);
   return `${m}${d}`;
 };
 

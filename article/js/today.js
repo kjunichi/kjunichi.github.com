@@ -10,7 +10,7 @@ pagetitles:[
 const getKey = (h)=>{
   console.dir(index);
   for(const item of index.pagetitles) {
-    if(item.title === h.toLowerCase()) {
+    if(item.date === h) {
       return item.key;
     }
   }

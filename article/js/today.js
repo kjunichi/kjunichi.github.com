@@ -1,5 +1,6 @@
 let index;
 
+// functions 
 const getKey = (h)=>{
   console.dir(index);
   for(const item of index.pagetitles) {
@@ -17,11 +18,15 @@ const getDateStr = () => {
   return `${m}${d}`;
 };
 
+// main
+const dateStr = getDateStr();
+document.title = `Today(${dateStr})`;
+
 fetch('./data/today.json').then((res)=>{
   return res.json();
 }).then((json)=>{
   index = json;
-  const dateStr = getDateStr();
+  
   const key = getKey(dateStr);
   document._write = document.write;
   const contents=[];

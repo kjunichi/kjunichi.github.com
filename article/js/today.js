@@ -17,7 +17,7 @@ const getDateStr = () => {
   return `${m}${d}`;
 };
 
-fetch('/data/today.json').then((res)=>{
+fetch('./data/today.json').then((res)=>{
   index = res.json();
   
   const dateStr = getDateStr();

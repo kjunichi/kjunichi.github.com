@@ -2,6 +2,10 @@
 "pagetitles":[
 {"title":"linux",
 "key":"6374047"},
+  {"title":"julia",
+"key":"03f465895dd58667ccfecd60883ba674"},
+  {"title":"mruby",
+"key":"6e397ecb00645241aa55"},
 {"title":"macos",
 "key":"6017741"}
 ]

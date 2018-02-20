@@ -18,8 +18,9 @@ const getDateStr = () => {
 };
 
 fetch('./data/today.json').then((res)=>{
-  index = res.json();
-  
+  return res.json();
+}).then((json)=>{
+  index = json;
   const dateStr = getDateStr();
   const key = getKey(dateStr);
   document._write = document.write;

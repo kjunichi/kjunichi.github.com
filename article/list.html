@@ -5,7 +5,11 @@
 <li><a href="#golang">golang</a></li>
 </ul>
   <script>
-    window.onhashchange = location.reload();
+    window.onload = () => {
+      window.onhashchange = () => {
+        location.reload();
+      };
+    };
   </script>
 </body>
 </html>

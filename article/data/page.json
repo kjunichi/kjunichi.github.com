@@ -1,5 +1,10 @@
 {
-    "pagetitles": [{
+    "pagetitles": [
+        {
+            "title": "rust",
+            "key": "1b65338f8992772b3799"
+        },
+        {
             "title": "node.js",
             "key": "5485822"
         },

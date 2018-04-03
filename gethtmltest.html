@@ -1,13 +1,12 @@
 <html>
 <body>
 <script>
-function cb(data) {
+window.addEventListener("load",() => {  
+  const cb = (data) => {
     console.log("getdata.");
-}
-
-window.addEventListener("load",function() {  
+  }
   
-  var turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
+  const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
   const s = document.createElement("script");
   s.charset = 'utf-8';
   s.type = "text/javascript";

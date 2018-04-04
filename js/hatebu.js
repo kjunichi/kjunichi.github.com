@@ -35,7 +35,7 @@ function doMyFunc(inText) {
         $('#hatebu').append(ul);
     }
     clearInterval(timerId);
-    $('#hateprogressBar').css("width", "100%");
+    $('#hateprogressBar').css("aria-valuenow", "100%");
     const elm = document.getElementById("hateprogress");
     elm.parentNode.removeChild(elm);
 }

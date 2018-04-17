@@ -1,6 +1,10 @@
 {
     "pagetitles": [
         {
+            "title": "emscripten",
+            "key": "6789286"
+        },
+        {
             "title": "powershell",
             "key": "7868978"
         },

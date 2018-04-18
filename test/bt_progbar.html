@@ -27,7 +27,8 @@
     // プログレスバーの長さの更新処理
     t = t + 0.2;
     const r = (1 - 1 / (t + 1)) * 100;
-    $('#hateprogressBar').css("aria-valuenow", r);
+    //$('#hateprogressBar').css("aria-valuenow", `${r}%`);
+    $('#hateprogressBar').css("width", `${r}%`);
   }, 300);
 
   setTimeout(()=>{

@@ -35,7 +35,7 @@ function doMyFunc(inText) {
         $('#hatebu').append(ul);
     }
     clearInterval(timerId);
-    $('#hateprogressBar').css("aria-valuenow", "100%");
+    $('#hateprogressBar').css("width", "100%");
     const elm = document.getElementById("hateprogress");
     elm.parentNode.removeChild(elm);
 }
@@ -52,7 +52,7 @@ $(function() {
         // プログレスバーの長さの更新処理
         t = t + 0.2;
         const r = (1 - 1 / (t + 1)) * 100;
-        $('#hateprogressBar').css("aria-valuenow", r);
+        $('#hateprogressBar').css("width", `${r}%`);
     }, 300);
     const s = document.createElement("script");
     s.src = "https://kjunurl2015.appspot.com/gethtml?t=1&url=" + encodeURIComponent(turl) + "&callback=cb";

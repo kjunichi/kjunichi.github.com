@@ -49,9 +49,10 @@ $(function() {
     const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
     $('#outHtml').text("Fetching...");
     timerId = setInterval(() => {
+        // プログレスバーの長さの更新処理
         t = t + 0.2;
         const r = (1 - 1 / (t + 1)) * 100;
-        $('#hateprogressBar').css("aria-valuenow", r + "%");
+        $('#hateprogressBar').css("aria-valuenow", r);
     }, 300);
     const s = document.createElement("script");
     s.src = "https://kjunurl2015.appspot.com/gethtml?t=1&url=" + encodeURIComponent(turl) + "&callback=cb";

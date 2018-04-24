@@ -53,11 +53,13 @@ https://kjunurl2015.appspot.com/imgview2
 <h3>Example Request</h3>
 <iframe>
   <script>
-  const myfunc=(img)=>{
-    console.log(img);
-  };
+    const myfunc=(img)=>{
+      console.log(img);
+    };
+    const elm=document.createElement("script");
+    elm.src="https://kjunurl2015.appspot.com/imgview2?host=kjunichi.github.io&path=/anim.gif&callback=myfunc";
   </script>
-  <script src="https://kjunurl2015.appspot.com/imgview2?host=kjunichi.github.io&path=/anim.gif&callback=myfunc"></script>
+  <script src=""></script>
   
 </iframe>
 <h2>gethtml</h2>
@@ -69,6 +71,5 @@ https://kjunurl2015.appspot.com/imgview2
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/hatebu.js"></script>
 </body>
 </html>

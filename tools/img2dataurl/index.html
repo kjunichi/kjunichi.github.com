@@ -19,12 +19,16 @@
 
 <body>
     <div class="container">
+        <div class="form-group">
         <select class="form-control" id="imgType">
             <option selected>JPEG</option>
             <option>PNG</option>
         </select>
         <div class="alert alert-success" role="alert" id="dropImg">ここに画像ファイルをドロップ</div>
+        <figure class="figure">
+        </div>
         <canvas id="world"></canvas>
+        </figure>
         <textarea id="dataurl" class="form-control" placeholder="ここに結果が表示されます。"></textarea>
         <div id="con"></div>
     </div>

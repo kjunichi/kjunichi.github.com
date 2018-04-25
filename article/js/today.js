@@ -18,7 +18,7 @@ const getDateStr = () => {
     return `${m}${d}`;
 };
 
-const writeTodayArticle => (cb, elm) {
+const writeTodayArticle = (cb, elm) => {
     const dateStr = getDateStr();
     document.title = `Today(${dateStr})`;
 

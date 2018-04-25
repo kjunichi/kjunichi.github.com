@@ -5,7 +5,12 @@
     <title>Today</title>
   </head>
 <body>
-<script src="./js/today.js">
+  <script src="./js/today.js"></script>
+  <script>
+    writeTodayArticle (()=>{
+      console.log("bbbb");
+    });
+  </script>
 <script>
 if(location.hash) {
   document.title = location.hash.substring(1);

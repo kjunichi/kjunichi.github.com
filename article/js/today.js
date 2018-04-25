@@ -22,7 +22,7 @@ const writeTodayArticle = (cb, elm) => {
     const dateStr = getDateStr();
     document.title = `Today(${dateStr})`;
 
-    fetch('./data/today.json').then((res) => {
+    fetch('/article/data/today.json').then((res) => {
         return res.json();
     }).then((json) => {
         index = json;

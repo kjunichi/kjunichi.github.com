@@ -60,15 +60,10 @@
 <div id="hateprogress" class="progress">
 <div id="hateprogressBar" class="progress-bar progress-bar-striped progress-bar-animated" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: 10%;"></div>
 </div>
-<div id="hatebu">
-
-</div>
+<div id="hatebu"></div>
 
   <!-- 1:1 aspect ratio -->
-<div class="embed-responsive embed-responsive-1by1">
-  <iframe class="embed-responsive-item" src="/article/today.html"></iframe>
-</div>
-
+  <div id="taricle"></div>
   <h1>My works</h1>
 <ul>
 <li><a href="myworks/jsdoit.html">Works at Jsdo.it</a></li>
@@ -95,5 +90,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   <script src="./js/hatebu.js"></script>
+  <script src="./article/js/today.js"></script>
+  <script>
+    const elm = document.getElementById("tarticle");
+    writeTodayArticle(()=>{
+      console.log("abab");
+    },elm);
+  </script>
 </body>
 </html>

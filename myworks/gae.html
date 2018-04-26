@@ -59,10 +59,10 @@ https://kjunurl2015.appspot.com/imgview2
 </div>
 </div>
   <script>
-    const myfunc=(img)=>{
+    const myfunc=(json)=>{
       const elm = document.getElementById("imgview2_out");
       const imgElm = document.createElement("img");
-      imgElm.src=img;
+      imgElm.src=json.image;
       imgElm.onload = ()=>{
         elm.appendChild(imgElm);
       };

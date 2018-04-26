@@ -63,7 +63,9 @@ https://kjunurl2015.appspot.com/imgview2
       const elm = document.getElementById("imgview2_out");
       const imgElm = document.createElement("img");
       imgElm.src=img;
-      elm.appendChild(imgElm);
+      imgElm.onload = ()=>{
+        elm.appendChild(imgElm);
+      };
       console.log(img);
     };
     const elm=document.createElement("script");

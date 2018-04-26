@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
-  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -17,7 +16,6 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 </head>
 <body>
@@ -51,18 +49,8 @@ https://kjunurl2015.appspot.com/imgview2
 </table>
 
 <h3>Example Request</h3>
-<iframe>
-  <script>
-    const myfunc=(img)=>{
-      console.log(img);
-    };
-    const elm=document.createElement("script");
-    elm.src="https://kjunurl2015.appspot.com/imgview2?host=kjunichi.github.io&path=/anim.gif&callback=myfunc";
-    document.body.appendChild(elm);
-  </script>
-  <script src=""></script>
+  <div id="imgview2_out"></div>
   
-</iframe>
 <h2>gethtml</h2>
 <h1>Web apps for iOS</h1>
 <h2>Trainmail</h2>
@@ -70,7 +58,19 @@ https://kjunurl2015.appspot.com/imgview2
 </div>
 </div>
 </div>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    const myfunc=(img)=>{
+      const elm = document.getElementById("imgview2_out");
+      const imgElm = document.createElement("img");
+      imgElm.src=img;
+      elm.appendChild(imgElm);
+      console.log(img);
+    };
+    const elm=document.createElement("script");
+    elm.src="//kjunurl2015.appspot.com/imgview2?host=kjunichi.github.io&path=/anim.gif&callback=myfunc";
+    document.body.appendChild(elm);
+  </script>
+  <script src=""></script>
+  
 </body>
 </html>

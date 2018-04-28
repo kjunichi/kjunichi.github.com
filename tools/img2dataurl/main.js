@@ -31,7 +31,7 @@ image.onload = () => {
 
     const texta = document.getElementById("dataurl");
     const type = document.getElementById("imgType");
-    texta.value = canvas.toDataURL(type);
+    texta.value = canvas.toDataURL(type.value);
 };
 
 //ドロップされるエリアの取得

@@ -30,7 +30,8 @@ image.onload = () => {
     //ダウンロードリンクの作成
 
     const texta = document.getElementById("dataurl");
-    texta.value = canvas.toDataURL("image/jpeg");
+    const type = document.getElementById("imgType");
+    texta.value = canvas.toDataURL(type);
 };
 
 //ドロップされるエリアの取得

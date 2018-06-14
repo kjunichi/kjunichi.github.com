@@ -1,0 +1,5 @@
+body { background-color: #DDDDDD; font: 30px sans-serif; }
+div.dropArea {
+    border-style: dotted;
+    background-color: #88DD88;
+}

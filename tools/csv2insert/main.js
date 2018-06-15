@@ -1,38 +1,61 @@
+"use strict";
+
 ( () => {
     const procMain = (data) => {
-      let tableName = document.getElementById("tableName").value
+      
       const putInsert = (headers,items)=> {
+        // 列名の取得
         const head = headers.trim().split("\t")
-        const item = items.trim().split("\t")
         
-        let out = `insert into ${tableName} (`
+        const item = items.trim().split("\t")
+        const out = []
+        out.push( `insert into ${tableName} (`)
         for(let i = 0; i< head.length-1; i++) {
-          out += `${head[i]},`
-          
+          out.push(`${head[i]},`)
         }
-        out += `${head[head.length-1]}) values (`
+        out.push(`${head[head.length-1]}\n) values (\n`)
+        
         for(let i = 0; i< item.length-1; i++) {
-          out += `'${item[i]}',`
-          
+          const tmpItem = item[i]
+          if(tmpItem.startsWith("TO_DATE(")) {
+            // 日付項目の場合
+            out.push(`${tmpItem},`)
+          } else {
+            out.push(`'${tmpItem}',`)
+          }
         }
-        out += `'${item[item.length-1]}')`
-        return out
-      }
-    
+        const tmpItem = item[item.length-1];
+        if(tmpItem.startsWith("TO_DATE(")) {
+            // 日付項目の場合
+            out.push(`${tmpItem}\n);`)
+        } else {
+            out.push(`'${tmpItem}'\n);`)
+        }
+        //out.push(`'${item[item.length-1]}'\n)`)
+        
+        return out.join("")
+      } // end of putInsert
+      
+      let tableName = document.getElementById("tableName").value
+      
       const lines = data.split("\n")
+      
+      // 1行目の列名を取得
       const headers = lines[0]
-      console.log(headers.split("\t"))
-      let buf=""
+      //console.log(headers.split("\t"))
+      
+      const buf=[]
       for(let i = 1; i < lines.length; i++) {
         const items = lines[i]
         const item = items.split("\t")
         const outLine = putInsert(headers,items)
-        buf += outLine + "\n"
+        buf.push(outLine)
       }
       const elm = document.getElementById("output")
       //elm.innerText = buf
       const aFileParts = []
-      aFileParts[0]=buf
+      aFileParts.push(buf.join('\n'))
+      aFileParts.push('\n')
       const outBlob = new Blob(aFileParts, {type: 'text/plain'})
       const sqlUrl = URL.createObjectURL(outBlob)
       const link = document.createElement('A')
@@ -67,11 +90,12 @@
         const reader = new FileReader();
         reader.onload = (e) => {
             // ファイルの読み込み
-            var data = e.target.result
+            const data = e.target.result
             //console.log(data)
+            // メイン処理開始
             procMain(data)
         };
-        //reader.readAsArrayBuffer(file);
+        // ドロップされるファイルはテキストファイルとみなして処理する。
         reader.readAsText(file)
         dropArea.style.backgroundColor="#88DD88"
         console.log('Drop end')

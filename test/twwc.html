@@ -1,0 +1,154 @@
+<!doctype html>
+ 
+<html>
+  <head>
+    <meta charset="utf-8" />    
+  </head>
+  <body>
+    <div id="vg"></div>
+    <script src="https://johnmyleswhite.github.io/Vega.jl/javascripts/d3.min.js"></script>
+    <script src="https://johnmyleswhite.github.io/Vega.jl/javascripts/topojson.js"></script>
+    <script src="https://johnmyleswhite.github.io/Vega.jl/javascripts/d3.layout.cloud.js"></script>
+    <script src="https://johnmyleswhite.github.io/Vega.jl/javascripts/vega.min.js"></script>
+    
+    <script>
+    const spec = {
+  "name":"wordcloud","width":800,"height":400,
+  "padding":"auto","viewport":null,"background":null,
+  "data":[
+    {
+      "name":"table_s7ojw","format":null,
+      "values":[
+        "textfalse","これ","ほんと","そう","だっ","た","。","旅行","で",
+        "誰","も","い","ない","実家","に","行っ","て","プリンタ","が","床","に","落下","し","て","壊れ","て","い","た","の","写真","に","撮っ","て","おい","たら","、","それで","保険","下り","まし","た","。","https","://","t",".","co","/","BpQUPLAkqKfalse","週","明け","の","小児科","、","流石","に","、","いつも","空い","て","て","こちら","が","心配","し","て","しまう","くらい","の","近所","の","小児科","医","、","激","混み","だ","。","false","週末","ブログ","書い","た","ん","だっ","た","。","https","://","t",".","co","/","95","qghPJvPO","https","://","t",".","co","/","2","pUOFX","4","dfSfalse","“","約","700","km","の","距離","から","見","た","リュウグウ","の","自転","の","よう","す","|","トピックス","|","JAXA","は","やぶ","さ","２","プロジェクト","”","https","://","t",".","co","/","uIEAfAbP","7","bfalse","\"","RT","@","AkiyoshiKitaoka",":","For","some","people",",","red","appears","to","be","in","front","of","blue",".","For","some","people",",","blue","appears","to","be","in","front","of","red",".","This","phenome","…","\"","false","#","昼飯","奥さん","の","台湾","の","お","土産","八角","の","効い","た","ラーメン","https","://","t",".","co","/",
+        "RUCNtkb","3","Wo","https","://","t",".","co","/","KfxN","16","D","9","xafalse","\"","寒","すぎ"
+      ],
+      "source":null,"url":null,
+      "transform":[
+        {
+          "x":{
+            "pattern":"[\\w']{3,}","case":"upper","field":"data",
+            "stopwords":"(i|me|my|myself|we|us|our|ours|ourselves|you|your|yours|yourself|yourselves|he|him|his|himself|she|her|hers|herself|it|its|itself|they|them|their|theirs|themselves|what|which|who|whom|whose|this|that|these|those|am|is|are|was|were|be|been|being|have|has|had|having|do|does|did|doing|will|would|should|can|could|ought|i'm|you're|he's|she's|it's|we're|they're|i've|you've|we've|they've|i'd|you'd|he'd|she'd|we'd|they'd|i'll|you'll|he'll|she'll|we'll|they'll|isn't|aren't|wasn't|weren't|hasn't|haven't|hadn't|doesn't|don't|didn't|won't|wouldn't|shan't|shouldn't|can't|cannot|couldn't|mustn't|let's|that's|who's|what's|here's|there's|when's|where's|why's|how's|a|an|the|and|but|if|or|because|as|until|while|of|at|by|for|with|about|against|between|into|through|during|before|after|above|below|to|from|up|upon|down|in|out|on|off|over|under|again|further|then|once|here|there|when|where|why|how|all|any|both|each|few|more|most|other|some|such|no|nor|not|only|own|same|so|than|too|very|say|says|said|shall)",
+            "type":"countpattern"
+          }
+        },
+        {
+          "x":{
+            "field":"weight","expr":"if(datum.text=='VEGA', 600, 300)","type":"formula"
+          }
+        },
+        {
+          "x":{
+            "field":"angle","expr":"[-45, 0, 45][~~(random() * 3)]","type":"formula"
+          }
+        },
+        {
+          "x":{
+            "fontScale":[12,56],
+            "rotate":{"field":"angle"},
+            "font":{"value":"Helvetica Neue"},
+            "size":[800,400],"text":{"field":"text"},"type":"wordcloud",
+            "fontSize":{"field":"count"},
+            "fontWeight":{"field":"weight"}
+          }
+        },
+        {
+          "x":{
+            "test":"datum.count > 0","type":"filter"
+          }
+        },
+        {
+          "x":{
+            "field":"group","expr":"datum.text","type":"formula"
+          }
+        }
+      ], // transform
+      "modify":null
+    }
+  ], // data
+  "scales": [
+    {
+      "name":"group","_type":"ordinal","domain":null,"domainMin":null,"domainMax":null,
+      "range":[
+        "rgb(166,206,227)","rgb( 31,120,180)","rgb(178,223,138)","rgb( 51,160, 44)","rgb(251,154,153)","rgb(227, 26, 28)","rgb(253,191,111)","rgb(255,127,  0)","rgb(202,178,214)","rgb(106, 61,154)","rgb(255,255,153)","rgb(177, 89, 40)"
+      ],
+          "rangeMin":null,"rangeMax":null,"reverse":null,"round":null,"points":null,"padding":null,
+          "outerPadding":null,"bandWidth":null,"sort":null,"clamp":null,"nice":null,"exponent":null,
+          "zero":null
+    }
+  ], // scales
+  "axes":null,
+  "marks":[
+    {
+      "name":null,"key":null,"_type":"text",
+      "from":{
+            "data":"table_s7ojw","mark":null,"transform":null,"value":null
+      },
+      "properties":{
+        "enter":{
+          "x":{
+              "value":null,"field":"layout_x","group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "x2":null,"xc":null,"width":null,
+          "y":{
+            "value":null,
+            "field":"layout_y",
+            "group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "y2":null,"yc":null,"height":null,"opacity":null,
+          "fill":{
+              "value":null,
+              "field":"text","group":null,"scale":"group","mult":null,"offset":null,
+              "band":null,"signal":null
+          },
+          "fillOpacity":null,
+          "stroke":null,"strokeWidth":null,"strokeOpacity":null,"strokeDash":null,"strokeDashOffset":null,
+          "cursor":null,"clip":null,"size":null,"shape":null,"path":null,"innerRadius":null,"outerRadius":null,
+          "startAngle":null,"endAngle":null,"interpolate":null,"tension":null,"orient":null,"url":null,
+          "align":{
+            "value":"center","field":null,"group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "baseline":{
+            "value":"alphabetic",
+            "field":null,"group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "text":{
+            "value":null,"field":"text","group":null,"scale":null,"mult":null,"offset":null,
+            "band":null,"signal":null
+          },
+          "dx":null,"dy":null,"radius":null,"theta":null,
+          "angle":{
+            "value":null,"field":"layout_rotate","group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "font":{
+            "value":null,"field":"layout_font",
+            "group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "fontSize":{
+            "value":null,
+            "field":"layout_fontSize","group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "fontWeight":{
+            "value":null,
+            "field":"layout_fontWeight","group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          },
+          "fontStyle":{
+            "value":null,
+            "field":"layout_fontStyle","group":null,"scale":null,"mult":null,"offset":null,"band":null,"signal":null
+          }
+        }, // enter
+          "exit":null,"update":null,"hover":null
+        }, // properties
+        "delay":null,"ease":null,"marks":null,"scales":null,"axes":null,"interactive":null
+    }
+  ], // marks
+  "legends":null,
+  "signals":null,"predicates":null,"modify":null
+}
+
+vg.parse.spec(spec, (chart) => { chart({el:"vg"}).update() })
+
+    </script>
+  </body>
+</html>
+

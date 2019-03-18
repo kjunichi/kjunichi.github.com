@@ -46,7 +46,7 @@ function cb(data) {
 
 // forked from kjunichi's "任意のURLをGETする" http://jsdo.it/kjunichi/A3vG
 $(function() {
-    const turl = "http://b.hatena.ne.jp/kjw_junichi/atomfeed?tag=あとで読む";
+    const turl = "http://b.hatena.ne.jp/kjw_junichi/rss?tag=あとで読む";
     $('#outHtml').text("Fetching...");
     timerId = setInterval(() => {
         // プログレスバーの長さの更新処理

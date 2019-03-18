@@ -5,19 +5,17 @@ let timerId;
 function doMyFunc(inText) {
     const parser = new DOMParser();
     const dom = parser.parseFromString(inText, "text/xml");
-    const entries = dom.getElementsByTagName("entry");
+    const entries = dom.getElementsByTagName("item");
     let savedIssuedDate = "";
     let ul = "";
     for (let i = 0; i < entries.length; i++) {
-        const issued = entries[i].getElementsByTagName("issued")[0].textContent;
+        const issued = entries[i].getElementsByTagName("dc:date")[0].textContent;
         const issuedDate = issued.split("T")[0];
         const title = entries[i].getElementsByTagName("title")[0].textContent;
         const linkUrls = entries[i].getElementsByTagName("link");
         let linkurl = "";
         for (let j = 0; j < linkUrls.length; j++) {
-            if (linkUrls[j].getAttribute("rel") == "related") {
-                linkurl = linkUrls[j].getAttribute("href");
-            }
+            linkurl = linkUrls[j].textContent;
         }
         if (savedIssuedDate != issuedDate) {
             if (ul !== "") {

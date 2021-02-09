@@ -38,7 +38,7 @@ const elm4 = document.getElementById("lnk4")
 
 elm4.addEventListener("click", () => {
     console.log(`test start`)
-    location.replace = "test.html"
+    location.replace("test.html")
     console.log(`test end`)
 }, false)
 

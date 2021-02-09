@@ -34,7 +34,7 @@ elm.addEventListener("click", () => {
     console.log(`test end`)
 }, false)
 
-const elm3 = document.getElementById("lnk4")
+const elm4 = document.getElementById("lnk4")
 
 elm.addEventListener("click", () => {
     console.log(`test start`)

@@ -19,7 +19,7 @@ elm.addEventListener("click", () => {
 
 const elm2 = document.getElementById("lnk2")
 
-elm.addEventListener("click", () => {
+elm2.addEventListener("click", () => {
     console.log(`test start`)
     const o = document.getElementById("out")
     getContents(o, "")
@@ -28,7 +28,7 @@ elm.addEventListener("click", () => {
 
 const elm3 = document.getElementById("lnk3")
 
-elm.addEventListener("click", () => {
+elm3.addEventListener("click", () => {
     console.log(`test start`)
     location.href = "test.html"
     console.log(`test end`)
@@ -36,7 +36,7 @@ elm.addEventListener("click", () => {
 
 const elm4 = document.getElementById("lnk4")
 
-elm.addEventListener("click", () => {
+elm4.addEventListener("click", () => {
     console.log(`test start`)
     location.replace = "test.html"
     console.log(`test end`)

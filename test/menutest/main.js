@@ -33,3 +33,12 @@ elm.addEventListener("click", () => {
     location.href = "test.html"
     console.log(`test end`)
 }, false)
+
+const elm3 = document.getElementById("lnk4")
+
+elm.addEventListener("click", () => {
+    console.log(`test start`)
+    location.replace = "test.html"
+    console.log(`test end`)
+}, false)
+

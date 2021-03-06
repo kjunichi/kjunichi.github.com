@@ -1,5 +1,5 @@
-windows.addEventListener('beforeunload',()=>{
+window.addEventListener('beforeunload',(e)=>{
     alert('hello world!')
-    
-  },false)
+    return ""
+},false)
   
